@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
-from ..models import Menu
-from ..serializers import MenuSerializers
+from restaurant.models import Menu
+from restaurant.serializers import MenuSerializers
 from django.urls import reverse
 import json
 
