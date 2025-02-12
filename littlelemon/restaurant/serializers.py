@@ -9,7 +9,7 @@ class BookingSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Ensure price > 0 and inventory >= 0"""
-        if data['no_of_guests'] <= 0:
+        if 'no_of_guests' in data and data['no_of_guests'] <= 0:
             raise serializers.ValidationError({"Number of Guests": "Numbers of Guest must be greater than 0."})
         return data
 
@@ -22,8 +22,8 @@ class MenuSerializers(serializers.ModelSerializer):
     
     def validate(self, data):
         """Ensure price > 0 and inventory >= 0"""
-        if data['price'] <= 0:
+        if 'price' in data and data['price'] <= 0:
             raise serializers.ValidationError({"price": "Price must be greater than 0."})
-        if data['inventory'] < 0:
+        if 'inventory' in data and data['inventory'] < 0:
             raise serializers.ValidationError({"inventory": "Inventory cannot be negative."})
         return data
